@@ -1,8 +1,15 @@
 
 
-def to_list(data):
+def to_collection(data):
     _data, values, _path = _handle(data, set(), None)
     return values
+
+#[TODO] def from_collection(values)
+
+#[TODO] def diff(data1, data2)
+# key starting with - are removed
+
+#[TODO] def patch(patch, data)
 
 
 def append_path(path, slug):
@@ -32,4 +39,4 @@ if __name__ == '__main__':
                 }
             }
     print data
-    print to_list(data)
+    print to_collection(data)
