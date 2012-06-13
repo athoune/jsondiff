@@ -3,6 +3,9 @@ JsonDiff
 
 Transforma json like data in a set of key/value.
 
+Works with json like data, it should works with [msgpack](http://msgpack.org/)
+or [bson](http://bsonspec.org/) or even [tnetstrings](http://tnetstrings.org/).
+
 Exemple
 -------
 
