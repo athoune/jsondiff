@@ -8,6 +8,31 @@ def to_collection(data):
 #[TODO] def diff(data1, data2)
 # key starting with - are removed
 
+
+def diff(data1, data2):
+    d1 = to_collection(data1)
+    d2 = to_collection(data2)
+    keys = set()
+    removing = {}
+    for k, v in d1 - d2:
+        removing[k] = v
+        keys.add(k)
+    adding = {}
+    for k, v in d2 - d1:
+        adding[k] = v
+        keys.add(k)
+    diff = {}
+    for k in keys:
+        if k in removing and k in adding:
+            print "modifying", k
+            diff[k] = adding[k]
+            continue
+        if k in adding:
+            diff["+%s" % k] = adding[k]
+            continue
+        diff["-%s" % k] = removing[k]
+    return diff
+
 #[TODO] def patch(patch, data)
 
 

@@ -1,4 +1,4 @@
-from jsondiff import to_collection
+from jsondiff import to_collection, diff
 
 
 def test_collection():
@@ -16,3 +16,18 @@ def test_collection():
         ('tags[1]', 'pam'),
         ('like.food', 'ramen'),
         ('tags[0]', 'pim')])
+
+
+def test_diff():
+    data1 = {"age": 42,
+            "name": "Bob",
+            "food": "okonomiyaki"
+            }
+    data2 = {"name": "Casimir",
+            "Location": "Torcy",
+            "age": 42
+            }
+    assert diff(data1, data2) == {
+        '-food': 'okonomiyaki',
+        'name': 'Casimir',
+        '+Location': 'Torcy'}
