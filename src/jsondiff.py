@@ -1,8 +1,7 @@
 
 
 def to_collection(data):
-    _data, values, _path = _handle(data, set(), None)
-    return values
+    return _handle(data, set(), None)
 
 #[TODO] def from_collection(values)
 
@@ -21,14 +20,14 @@ def append_path(path, slug):
 def _handle(data, values, path):
     if 'items' in dir(data):
         for k, v in data.items():
-            _, values, _ = _handle(v, values, append_path(path, k))
-        return None, values, None
+            values = _handle(v, values, append_path(path, k))
+        return values
     if '__iter__' in dir(data):
         for i, v in enumerate(data):
-            _, values, _ = _handle(v, values, "%s[%i]" % (path, i))
-        return None, values, None
+            values = _handle(v, values, "%s[%i]" % (path, i))
+        return values
     values.add((path, data))
-    return data, values, path
+    return values
 
 if __name__ == '__main__':
     data = {"age": 42,
