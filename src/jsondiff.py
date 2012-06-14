@@ -28,14 +28,3 @@ def _handle(data, values, path):
         return values
     values.add((path, data))
     return values
-
-if __name__ == '__main__':
-    data = {"age": 42,
-            "name": "Robert",
-            "tags": ["pim", "pam", "poum"],
-            "like": {
-                "food": "ramen"
-                }
-            }
-    print data
-    print to_collection(data)
