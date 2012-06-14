@@ -5,9 +5,6 @@ def to_collection(data):
 
 #[TODO] def from_collection(values)
 
-#[TODO] def diff(data1, data2)
-# key starting with - are removed
-
 
 def diff(data1, data2):
     d1 = to_collection(data1)

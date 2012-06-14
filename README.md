@@ -9,6 +9,8 @@ or [bson](http://bsonspec.org/) or even [tnetstrings](http://tnetstrings.org/).
 Exemple
 -------
 
+### Normalisation
+
     {'age': 42,
     'like': {
         'food': 'ramen'},
@@ -25,7 +27,22 @@ Will be transformed to
         ('like.food', 'ramen'),
         ('tags[0]', 'pim')])
 
-You can now diff to json like data.
+### Diff
+
+    data1 = {"age": 42,
+            "name": "Bob",
+            "food": "okonomiyaki"
+            }
+    data2 = {"name": "Casimir",
+            "Location": "Torcy",
+            "age": 42
+            }
+    assert diff(data1, data2) == {
+        '-food': 'okonomiyaki',
+        'name': 'Casimir',
+        '+Location': 'Torcy'}
+
+Key are unique, patch don't have to remove and add data.
 
 Licence
 -------
